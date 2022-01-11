@@ -38,7 +38,7 @@ function App() {
       <div className="App-result">
         {result
           .map((group, key) => (
-            <div key={key}>
+            <div className="App-result-card" key={key}>
               <h2>{`Groupe ${key+1}`}</h2>
               { group.map((student, key) => (
                 <p key={key}>{student}</p>
