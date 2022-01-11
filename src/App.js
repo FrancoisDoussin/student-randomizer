@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { HiRefresh, HiOutlineMinus, HiOutlinePlus  } from 'react-icons/hi';
 
 import students from './students.json';
 
@@ -8,32 +9,39 @@ function App() {
   const [groupNumber, setGroupNumber] = useState(1);
   const [result, setResult] = useState([]);
 
-  const updateGroupNumber = (event) => {
-    if (event.target.innerHTML === "+") {
-      setGroupNumber(groupNumber + 1);
-    }
-
-    if (event.target.innerHTML === "-" && groupNumber > 1) {
-      setGroupNumber(groupNumber - 1);
-    }
+  const minorGroupNumber = () => {
+    if (groupNumber > 1) setGroupNumber(groupNumber - 1)
   }
 
-  useEffect(() => {
+  const majorGroupNumber = () => {
+    setGroupNumber(groupNumber + 1)
+  }
+
+  const shuffle = () => {
     const suffleStudent = students.sort((a, b) => 0.5 - Math.random());
     const numsPerGroup = Math.ceil(suffleStudent.length / groupNumber);
     const result = new Array(groupNumber)
       .fill('')
       .map((_, i) => suffleStudent.slice(i * numsPerGroup, (i + 1) * numsPerGroup));
-
+  
     setResult(result)
+  }
+
+  useEffect(() => {
+    shuffle()
   }, [groupNumber])
 
   return (
     <div className="App">
       <div className="App-buttons">
-        <div onClick={updateGroupNumber}>-</div>
-        <div>{groupNumber}</div>
-        <div onClick={updateGroupNumber}>+</div>
+        <div className="App-buttons-count">
+          <div onClick={minorGroupNumber}><HiOutlineMinus /></div>
+          <div>{groupNumber}</div>
+          <div onClick={majorGroupNumber}><HiOutlinePlus /></div>
+        </div>
+        <div className="App-buttons-reset">
+          <div onClick={shuffle}><HiRefresh /></div>
+        </div>
       </div>
       <div className="App-result">
         {result
