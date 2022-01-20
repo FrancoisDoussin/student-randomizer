@@ -27,10 +27,13 @@ const Randomizer = ({ students, setStudents }) => {
   const shuffle = () => {
     const suffleStudent = students.sort((a, b) => 0.5 - Math.random());
     const numsPerGroup = Math.ceil(suffleStudent.length / groupNumber);
-    const result = new Array(groupNumber)
-      .fill('')
-      .map((_, i) => suffleStudent.slice(i * numsPerGroup, (i + 1) * numsPerGroup));
-  
+    const result = [];
+    for (let i = 0; i < groupNumber; i++) {
+      const group = suffleStudent.slice(i * numsPerGroup, (i + 1) * numsPerGroup);
+      if (group.length) result.push(
+        suffleStudent.slice(i * numsPerGroup, (i + 1) * numsPerGroup)
+      );
+    }
     setResult(result)
   }
 
