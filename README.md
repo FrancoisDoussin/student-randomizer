@@ -1,5 +1,5 @@
 # Students Randomizer
-
+[Available Here](https://francoisdoussin.github.io/students-randomizer/)
 ## Requirements
 
 - nodejs
