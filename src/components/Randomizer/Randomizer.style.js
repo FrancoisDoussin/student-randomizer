@@ -54,16 +54,17 @@ export const RandomizerBinButton = styled(RandomizerRoundedButton)`
 `;
 
 export const RandomizerResult = styled.div`
-  margin-top: 2em;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2em;
-`;
-
+  overflow: scroll;
+  `;
+  
 export const RandomizerResultCard = styled.div`
-  box-shadow: 0 2px 20px 0 rgb(0 0 0 / 10%);
+  margin: 2em;
+  box-shadow: 0 1em 1em 0 rgb(0 0 0 / 10%);
   border-radius: 0 0 0.5em 0.5em;
   width: 300px;
 `;
