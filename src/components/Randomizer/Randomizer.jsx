@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { HiRefresh, HiOutlineMinus, HiOutlinePlus, HiTrash } from 'react-icons/hi';
+import {
+  HiRefresh,
+  HiOutlineMinus,
+  HiOutlinePlus,
+  HiTrash
+} from 'react-icons/hi';
 import {
   RandomizerRoundedButton,
   RandomizerCountButtons,
@@ -37,9 +42,7 @@ const Randomizer = ({ students, setStudents }) => {
     setResult(result)
   }
 
-  useEffect(() => {
-    shuffle()
-  }, [groupNumber])
+  useEffect(shuffle, [groupNumber])
 
   return (
     <RandomizerContainer>
